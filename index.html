@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV – Fabián Cerda Sepúlveda</title>
+  <meta name="description" content="Curriculum Vitae de Fabián Elías Cerda Sepúlveda, estudiante de Ingeniería Civil en Computación Informática, UTEM." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Variables ── */
+    :root {
+      --bg:        #0d0f14;
+      --surface:   #161922;
+      --border:    #2a2f3d;
+      --accent:    #4fffb0;
+      --accent2:   #00c8ff;
+      --text:      #e8eaf0;
+      --muted:     #8a90a2;
+      --heading:   #ffffff;
+      --font-size: 16px;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Font-size control (Inclusive Design) ── */
+    #font-controls {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: .4rem .8rem;
+      z-index: 100;
+    }
+    #font-controls span {
+      font-size: .7rem;
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    #font-controls button {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s, color .2s;
+    }
+    #font-controls button:hover, #font-controls button:focus-visible {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    /* ── Body ── */
+    html { font-size: var(--font-size); scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── Layout ── */
+    .cv-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+    }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    .header-tag {
+      display: inline-block;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: .8rem;
+    }
+    header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      color: var(--heading);
+      line-height: 1.1;
+      margin-bottom: .3rem;
+    }
+    header h1 em {
+      color: var(--accent);
+      font-style: italic;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: .95rem;
+      margin-bottom: 1.6rem;
+    }
+
+    /* Contact list */
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem 1.4rem;
+    }
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      font-size: .88rem;
+      color: var(--muted);
+    }
+    .contact-list li svg { flex-shrink: 0; }
+    .contact-list a {
+      color: var(--accent2);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s;
+    }
+    .contact-list a:hover, .contact-list a:focus-visible {
+      border-bottom-color: var(--accent2);
+      outline: none;
+    }
+
+    /* ── Section ── */
+    section { margin-bottom: 2.8rem; }
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      margin-bottom: 1.4rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 3px;
+      height: 1.3em;
+      background: var(--accent);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .section-label h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--heading);
+      font-weight: 400;
+      letter-spacing: .01em;
+    }
+
+    /* ── Profile ── */
+    .profile-text {
+      font-size: .97rem;
+      color: var(--text);
+      border-left: 2px solid var(--border);
+      padding-left: 1.2rem;
+      line-height: 1.8;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    @media (max-width: 560px) { .skills-grid { grid-template-columns: 1fr; } }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+    }
+    .skill-group h3 {
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: .9rem;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+    }
+    .tag {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: .25rem .75rem;
+      font-size: .8rem;
+      color: var(--text);
+    }
+
+    /* ── Experience card ── */
+    .exp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+    }
+    .exp-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      color: var(--heading);
+      font-weight: 400;
+      margin-bottom: .25rem;
+    }
+    .exp-meta {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: .8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .3rem .9rem;
+    }
+    .exp-card p, .exp-card li {
+      font-size: .9rem;
+      color: var(--text);
+    }
+    .exp-card ul {
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+    }
+    .badge {
+      display: inline-block;
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      color: var(--accent);
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+      border-radius: 4px;
+      font-size: .7rem;
+      font-weight: 600;
+      padding: .1rem .5rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-left: .4rem;
+    }
+
+    /* ── Education ── */
+    .edu-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: .9rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin-top: .55rem;
+      flex-shrink: 0;
+    }
+    .edu-item h3 {
+      font-size: .95rem;
+      color: var(--heading);
+      font-weight: 500;
+      margin-bottom: .15rem;
+    }
+    .edu-item p {
+      font-size: .82rem;
+      color: var(--muted);
+    }
+
+    /* ── Languages ── */
+    .lang-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: .7rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .lang-row:last-child { border-bottom: none; }
+    .lang-name {
+      width: 110px;
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--heading);
+      flex-shrink: 0;
+    }
+    .lang-bar-wrap {
+      flex: 1;
+      height: 6px;
+      background: var(--border);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .lang-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 99px;
+      transition: width 1s ease;
+    }
+    .lang-level {
+      font-size: .78rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ── High-contrast toggle ── */
+    body.high-contrast {
+      --bg: #000000;
+      --surface: #111111;
+      --border: #ffffff;
+      --accent: #ffff00;
+      --accent2: #00ffff;
+      --text: #ffffff;
+      --muted: #cccccc;
+      --heading: #ffffff;
+    }
+    #hc-btn {
+      position: fixed;
+      bottom: 1.2rem;
+      right: 1.2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: .5rem 1rem;
+      border-radius: 40px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .8rem;
+      cursor: pointer;
+      z-index: 100;
+      transition: background .2s;
+    }
+    #hc-btn:hover, #hc-btn:focus-visible {
+      background: var(--accent);
+      color: #000;
+      outline: none;
+    }
+
+    /* ── Focus visible ── */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      font-size: .78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Font size controls (Inclusive Design: user adjustable text) -->
+  <div id="font-controls" role="group" aria-label="Controles de tamaño de texto">
+    <span>Texto</span>
+    <button id="btn-decrease" aria-label="Reducir tamaño de texto" title="Reducir texto">A−</button>
+    <button id="btn-reset"    aria-label="Restablecer tamaño de texto" title="Restablecer">A</button>
+    <button id="btn-increase" aria-label="Aumentar tamaño de texto" title="Aumentar texto">A+</button>
+  </div>
+
+  <!-- High contrast toggle (Inclusive Design) -->
+  <button id="hc-btn" aria-pressed="false" aria-label="Activar modo de alto contraste">⬤ Alto contraste</button>
+
+  <div class="cv-wrapper" id="main-content">
+
+    <!-- ── HEADER ── -->
+    <header role="banner">
+      <span class="header-tag" aria-hidden="true">Curriculum Vitae</span>
+      <h1>Fabián <em>Cerda</em><br>Sepúlveda</h1>
+      <p class="subtitle">Ingeniería Civil en Computación Informática · UTEM · 4.º año</p>
+
+      <nav aria-label="Información de contacto">
+        <ul class="contact-list">
+          <li>
+            <!-- Email icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <a href="mailto:fcerdas@utem.cl" aria-label="Correo electrónico: fcerdas@utem.cl">fcerdas@utem.cl</a>
+          </li>
+          <li>
+            <!-- LinkedIn icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <a href="https://www.linkedin.com/in/fabian-cerda-675582409/" target="_blank" rel="noopener noreferrer" aria-label="Perfil de LinkedIn de Fabián Cerda (abre en nueva pestaña)">LinkedIn</a>
+          </li>
+          <li>
+            <!-- Location icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>San Bernardo, Chile</span>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- ── PERFIL ── -->
+      <section aria-labelledby="sec-perfil">
+        <div class="section-label">
+          <h2 id="sec-perfil">Perfil Profesional</h2>
+        </div>
+        <p class="profile-text">
+          Estudiante de cuarto año de Ingeniería Civil en Computación con mención en Informática en la UTEM. Con una base sólida en fundamentos de computación y desarrollo de software, actualmente enfocado en iniciar su especialización en el área de Datos e Inteligencia Artificial. Con gran disposición para aprender e implementar herramientas modernas como Microsoft Fabric para la gestión eficiente de información.
+        </p>
+      </section>
+
+      <!-- ── HABILIDADES ── -->
+      <section aria-labelledby="sec-skills">
+        <div class="section-label">
+          <h2 id="sec-skills">Habilidades</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <h3>Técnicas</h3>
+            <div class="skill-tags" role="list" aria-label="Habilidades técnicas">
+              <span class="tag" role="listitem">C</span>
+              <span class="tag" role="listitem">C++</span>
+              <span class="tag" role="listitem">SQL</span>
+              <span class="tag" role="listitem">Diseño de BD</span>
+              <span class="tag" role="listitem">Modelamiento de Sistemas</span>
+              <span class="tag" role="listitem">Ciclo de Vida de Software</span>
+              <span class="tag" role="listitem">Office 365</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Blandas</h3>
+            <div class="skill-tags" role="list" aria-label="Habilidades blandas">
+              <span class="tag" role="listitem">Capacidad Analítica</span>
+              <span class="tag" role="listitem">Trabajo en Equipo</span>
+              <span class="tag" role="listitem">Adaptabilidad</span>
+              <span class="tag" role="listitem">Comunicación</span>
+              <span class="tag" role="listitem">Autoaprendizaje</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── EXPERIENCIA ACADÉMICA ── -->
+      <section aria-labelledby="sec-exp">
+        <div class="section-label">
+          <h2 id="sec-exp">Experiencia Académica</h2>
+        </div>
+
+        <article class="exp-card" aria-label="Proyecto Adamantium">
+          <h3>Desarrollador de Software <span class="badge">En curso</span></h3>
+          <div class="exp-meta">
+            <span>📍 Santiago, Chile</span>
+            <span>📅 2025 – Actualidad</span>
+            <span>Sistemas de Información · UTEM</span>
+          </div>
+          <p style="margin-bottom:.7rem;">Desarrollo de una solución de software para <strong>Adamantium</strong>, empresa PYME del rubro de estructuras metálicas, en el contexto del ramo de Sistemas de Información.</p>
+          <ul>
+            <li>Levantamiento y análisis de requerimientos con cliente real.</li>
+            <li>Diseño e implementación de sistema orientado a optimizar la gestión de información de la empresa.</li>
+            <li>Aplicación del ciclo de vida de desarrollo de software en un contexto profesional.</li>
+          </ul>
+        </article>
+
+        <article class="exp-card" aria-label="Proyecto Panadería">
+          <h3>Desarrollador Web</h3>
+          <div class="exp-meta">
+            <span>📍 Santiago, Chile</span>
+            <span>📅 2024</span>
+            <span>Sistemas de Información · UTEM</span>
+          </div>
+          <ul>
+            <li>Desarrollo de un sitio web funcional para una microempresa del rubro de panadería.</li>
+            <li>Experiencia en trabajo con cliente real y requerimientos no formalizados.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- ── EDUCACIÓN ── -->
+      <section aria-labelledby="sec-edu">
+        <div class="section-label">
+          <h2 id="sec-edu">Educación</h2>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-dot" aria-hidden="true"></div>
+          <div>
+            <h3>Ingeniería Civil en Computación Informática</h3>
+            <p>Universidad Tecnológica Metropolitana (UTEM) · 2023 – Actualidad · En curso</p>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot" aria-hidden="true"></div>
+          <div>
+            <h3>Educación Media Completa</h3>
+            <p>Colegio King's School San Bernardo · 2018 – 2021</p>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot" aria-hidden="true"></div>
+          <div>
+            <h3>Educación Básica Completa</h3>
+            <p>Colegio King's School San Bernardo · 2009 – 2017</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── IDIOMAS ── -->
+      <section aria-labelledby="sec-lang">
+        <div class="section-label">
+          <h2 id="sec-lang">Idiomas</h2>
+        </div>
+
+        <div class="lang-row">
+          <span class="lang-name">Español</span>
+          <div class="lang-bar-wrap" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Nivel de español: Nativo (C2)">
+            <div class="lang-bar" style="width:100%"></div>
+          </div>
+          <span class="lang-level">C2 · Nativo</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">Inglés</span>
+          <div class="lang-bar-wrap" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" aria-label="Nivel de inglés: Intermedio (B1)">
+            <div class="lang-bar" style="width:55%"></div>
+          </div>
+          <span class="lang-level">B1 · Intermedio</span>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>Curriculum Vitae · Fabián Elías Cerda Sepúlveda · <span id="current-year"></span></p>
+      <p style="margin-top:.4rem;">Este CV ha sido diseñado con principios de <strong>Diseño Inclusivo</strong>: ajuste de tamaño de texto, alto contraste, semántica HTML y navegación accesible.</p>
+    </footer>
+
+  </div><!-- /cv-wrapper -->
+
+  <script>
+    // ── Font size control ──
+    const root = document.documentElement;
+    const sizes = [13, 14, 15, 16, 17, 18, 20, 22];
+    let sizeIdx = 3; // default 16px
+
+    function applySize() {
+      root.style.setProperty('--font-size', sizes[sizeIdx] + 'px');
+    }
+
+    document.getElementById('btn-decrease').addEventListener('click', () => {
+      if (sizeIdx > 0) { sizeIdx--; applySize(); }
+    });
+    document.getElementById('btn-reset').addEventListener('click', () => {
+      sizeIdx = 3; applySize();
+    });
+    document.getElementById('btn-increase').addEventListener('click', () => {
+      if (sizeIdx < sizes.length - 1) { sizeIdx++; applySize(); }
+    });
+
+    // ── High contrast toggle ──
+    const hcBtn = document.getElementById('hc-btn');
+    hcBtn.addEventListener('click', () => {
+      const on = document.body.classList.toggle('high-contrast');
+      hcBtn.setAttribute('aria-pressed', on);
+      hcBtn.textContent = on ? '⬤ Contraste normal' : '⬤ Alto contraste';
+    });
+
+    // ── Year ──
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
